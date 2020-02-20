@@ -1,3 +1,4 @@
+# I made some changes and my autoformatting changed the spacing
 # Display a menu in the console for the user to interact with.
 # Create a default array of hashes that represent items at a grocery store.
 # Create a menu option to add items to a user's grocery cart.
@@ -17,20 +18,20 @@ design_lines
 # design_lines
 # print "What would you like to do today?"
 # design_lines
-puts 
+puts
 design_lines
 print "How much money do you have to spend today?!"
 design_lines
 puts
 @user_wallet = gets.strip.to_i
-puts 
+puts
 menu
 end
 
 
 def menu
   # Menu to show options
-  puts 
+  puts
   design_lines
   print 'Main Menu'
   design_lines
@@ -45,7 +46,7 @@ def menu
   8) exit
   "
   user_choice = gets.strip.to_i
-  
+
   case user_choice
   when 1
     view_cart
@@ -53,25 +54,25 @@ def menu
     store_products
   when 3
     add_to_cart
-  when 4 
+  when 4
     remove_from_cart
-  when 5 
+  when 5
     calc_cart_total
   when 6
     add_items_to_store
-  when 7 
+  when 7
     check_out
   when 8
     exit_store
-  else 
+  else
     puts "Wrong choice, try again"
     menu
-  end 
+  end
 end
 
 def cart_items
   puts `clear`
-  puts 
+  puts
   design_lines
   print "Items in your cart"
   design_lines
@@ -81,7 +82,7 @@ def cart_items
     menu
   else
     @user_cart.each_with_index do |product, i|
-      
+
       puts "#{i + 1}) #{product[:item]}: price:#{product[:price]}"
     end
   end
@@ -93,17 +94,17 @@ def view_cart
   calc_cart_total
   puts "Starting wallet balance is $#{@user_wallet.round(2)}."
   menu
-end 
+end
 
 def display_items
   puts `clear`
-  puts 
+  puts
   design_lines
   print "We have this available for purchase"
   design_lines
   puts
   @store_inventory.each_with_index do |product, i|
-    
+
     puts "#{i + 1}) #{product[:item]} price #{product[:price]}"
   end
 end
@@ -117,13 +118,13 @@ end
 def add_to_cart
   #this will add available items to the cart
   puts `clear`
-  puts 
+  puts
   display_items
-  puts 
+  puts
   print "What item would you like to add to your cart?"
-  puts 
+  puts
   user_choice = gets.strip.to_i
-  if user_choice > @store_inventory.length()  
+  if user_choice > @store_inventory.length()
     puts "Wrong choice dummy, try again"
     sleep 1
     add_to_cart
@@ -132,27 +133,27 @@ def add_to_cart
     @user_cart << @store_inventory[user_choice - 1]
   end
   puts item_to_add
-  
+
   puts "You have added the #{item_to_add} to your cart"
-  puts 
+  puts
   design_lines
   print "Your cart items are shown below"
   design_lines
   puts
   view_cart
   menu
-  
+
 end
 
 def remove_from_cart
   #this will display cart then allow you to remove item
   puts `clear`
-  puts 
+  puts
   cart_items
   print "What item would you like to remove from your cart?"
-  puts 
+  puts
   user_choice = gets.strip.to_i
-  if user_choice > @user_cart.length()  
+  if user_choice > @user_cart.length()
     puts "Wrong choice dummy, try again"
     sleep 1
     remove_from_cart
@@ -180,33 +181,33 @@ end
 def add_items_to_store
   #This gives user the option to add new items to the store inventory
   puts `clear`
-  puts 
+  puts
   display_items
-  puts 
+  puts
   print "What item would you like to add to the store?"
-  puts 
+  puts
   new_item_name = gets.strip
   puts "How much should this item be?"
   new_item_price = gets.strip.to_i
-  
+
   new_item = {}
   new_item['item'.to_sym] = new_item_name
   new_item['price'.to_sym] = new_item_price
-  
+
   @store_inventory << new_item
-  
+
   puts "You have added #{new_item_name}, that costs #{new_item_price}."
-  
+
   display_items
   menu
 end
 
 def check_out
-  #will check if cust has enough money to check out. 
+  #will check if cust has enough money to check out.
   apply_coupon
   taxes
   puts `clear`
-  puts 
+  puts
   puts "scanning ..."
   sleep 1
   puts "scanning ..."
@@ -219,7 +220,7 @@ def check_out
   sleep 1
   puts "scanning ..."
   sleep 1
-  if @user_wallet >= @new_total 
+  if @user_wallet >= @new_total
     puts `clear`
     puts "Total after coupon code $#{@new_total.round(2)}"
     puts "Taxes charged, $#{@taxes}."
@@ -228,7 +229,7 @@ def check_out
     puts "Your wallet balance is $#{(@user_wallet - @cart_total).round(2)}."
     sleep 12
     exit_store
-  else 
+  else
     puts "Your pockets are looking a little thin."
     puts "You are going to have to remove some items."
     puts "Your cart total is $#{@cart_total.round(2)}.00, and you only have $#{@user_wallet.round(2)}.00."
@@ -275,18 +276,18 @@ def exit_store
   design_lines
   print "Thanks for visiting today!"
   design_lines
-  puts 
+  puts
   design_lines
   print "Goodbye"
   design_lines
-  puts 
+  puts
   exit
 end
 
 def design_lines
-  6.times do 
+  6.times do
   print "--"
-  end 
+  end
 end
 
   #store inventory
@@ -306,4 +307,3 @@ end
 
 
   greeting
-
